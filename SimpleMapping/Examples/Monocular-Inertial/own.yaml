@@ -1,0 +1,99 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+File.version: "1.0"
+
+Camera.type: "PinHole"
+
+# Camera calibration and distortion parameters (OpenCV) 
+Camera1.fx: 381.2222520528184
+Camera1.fy: 381.2359988109515
+Camera1.cx: 318.85495858206883
+Camera1.cy: 243.05400381998106
+
+Camera1.k1: -0.047675575680096394
+Camera1.k2: 0.03635674073364234
+Camera1.p1: -0.0004061046939771319
+Camera1.p2: -0.0008644692378481896
+
+# Camera resolution
+Camera.width: 640
+Camera.height: 480
+
+Camera.newWidth: 512
+Camera.newHeight: 384
+
+# Camera frames per second 
+Camera.fps: 15
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 0
+
+# Transformation from camera to body-frame (imu)
+IMU.T_b_c1: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: f
+   data: [0.9998949, 0.01441333, -0.00156644, 0.02619286,
+         -0.01443557, 0.9997793, -0.01526315, 0.00341765,
+        0.0013461, 0.01528416,  0.99988228, 0.01831328,
+         0.0, 0.0, 0.0, 1.0]
+
+# IMU noise
+IMU.NoiseGyro: 0.00278
+IMU.NoiseAcc: 0.0252
+IMU.GyroWalk: 0.0008 
+IMU.AccWalk: 0.04
+IMU.Frequency: 200.0
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 1000
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid	
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast			
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# MVS Parameters
+#--------------------------------------------------------------------------------------------
+
+# Make sure the the mvsnet_flag and setting_tsdf_fusion enabled
+mvsnet_flag: 1
+setting_tracking_type: "dense"
+setting_tsdf_fusion: 1
+dr_mvsnet_view_num: 8
+loopClosing: 0
+dr_mvsnet_render_stream: 1
+depthConstrain_BA: 0
+dr_timing: 0
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.MvsDepth: 1
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: 2.0
+Viewer.ViewpointZ: 3.5
+Viewer.ViewpointF: 500.0
+
